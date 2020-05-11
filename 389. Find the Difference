@@ -1,0 +1,21 @@
+class Solution {
+    public char findTheDifference(String s, String t) {
+        
+        List<Character> temp = new ArrayList<>();
+        for(int i=0; i<t.length(); i++)
+            temp.add(t.charAt(i));
+        
+        // Iterate over s
+            // if temp contains the current character, remove it from the list
+        // Return the first element of the list
+        
+        for(int i=0; i<s.length(); i++) {
+            if ( temp.contains(s.charAt(i)) ) {
+                temp.remove(temp.indexOf(s.charAt(i)));
+            }
+        }
+        
+        char missing = temp.get(0);
+        return missing;
+    }
+}
