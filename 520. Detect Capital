@@ -1,0 +1,33 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        
+        // Get the count for each letter/alphabet in the magazine
+        
+        char[] availableLetters = magazine.toCharArray();
+        Map<Character, Integer> map = new HashMap<>();
+        for(int i=0; i<availableLetters.length; i++) {
+            char key = availableLetters[i];
+            if ( map.containsKey(key) ) {
+                int value = map.get(key);
+                map.put(key, value+1);
+            } else {
+                map.put(key, 1);
+            }
+        }
+        
+        // Iterate over ransomNote
+            // If current letter is in the magazine, remove it and continue
+            // return false if it isn't
+        
+        char[] note = ransomNote.toCharArray();
+        for( char letter : note ) {
+            if ( map.containsKey(letter) && map.get(letter) > 0 ) {
+                int value = map.get(letter);
+                map.replace(letter, value-1);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+}
