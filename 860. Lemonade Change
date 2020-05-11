@@ -1,0 +1,32 @@
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        
+        int fives = 0;
+        int tens = 0;
+        int twenties = 0;
+        
+        for(int bill : bills) {
+            
+            if ( bill == 5 ) { // There is no change
+                fives++;
+            } else if ( bill == 10 ) { // Need one $5 bill
+                tens++;
+                if ( fives < 1)
+                    return false;
+                fives--;
+            } else if ( bill == 20 ) { // Need one $10 bill and one $5 bill OR three $5 bills
+                twenties++;
+                if ( tens >= 1 && fives >= 1) {
+                    tens--;
+                    fives--;
+                } else if ( tens == 0 && fives >= 3 ) {
+                    fives -= 3;
+                } else {
+                    return false;
+                }
+            }
+            
+        }
+        return true;   
+    }
+}
