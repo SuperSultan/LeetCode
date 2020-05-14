@@ -1,0 +1,25 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+        // Create a HashMap that stores indices and values at those indices
+        // Iterate over the array
+            // KEY = target - nums[i]
+            // If the map contains the KEY, add the current element and the value of the key to the result
+                // Return result
+            // Otherwise add it to the HashMap if it is not in the collection
+        
+        int[] result = new int[2];
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<nums.length; i++) {
+            if ( map.containsKey(target - nums[i]) ) {
+                int key = target - nums[i];
+                result[0] = map.get(key);
+                result[1] = i;
+                return result;
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+        return result;
+    }
+}
