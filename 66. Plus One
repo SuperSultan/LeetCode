@@ -1,0 +1,24 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        
+        // Iterate over each digit starting from the last digit
+            // If the current digit is < 9, just increment it and return the array
+            // Otherwise, set the current digit to 0
+        
+        // Create a new array with size+1
+        // Set the first digit to 1 and return
+        
+        int n = digits.length;
+        for(int i=n-1; i>=0; i--) {
+            if ( digits[i] < 9 ) {
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
+        }
+        
+        int[] result = new int[n+1];
+        result[0] = 1;
+        return result;
+    }
+}
