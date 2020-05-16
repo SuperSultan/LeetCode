@@ -1,0 +1,23 @@
+class Solution {
+    public String reverseWords(String s) {
+        
+        String[] words = s.split(" ");
+        String[] newWords = new String[words.length];
+        for(int i=0; i<words.length; i++) {
+            
+            char[] newWord = words[i].toCharArray();
+            int l = 0;
+            int r = newWord.length-1;
+            while( l < r ) {
+                char temp = newWord[l];
+                newWord[l++] = newWord[r];
+                newWord[r--] = temp;
+            }
+            
+            newWords[i] = String.valueOf(newWord);
+        }
+        
+        String joinedString = String.join(" ", newWords);
+        return joinedString;
+    }
+}
