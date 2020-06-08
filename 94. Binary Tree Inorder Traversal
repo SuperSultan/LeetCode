@@ -1,0 +1,24 @@
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        
+        if ( root == null )
+            return new ArrayList<>();
+        
+        List<Integer> result = new ArrayList<>();
+        result = dfs(root, result);
+        return result;
+    }
+    
+    public List<Integer> dfs(TreeNode root, List<Integer> list) {
+        if ( root == null )
+            return null;
+        
+        dfs(root.left, list);
+        
+        list.add(root.val);
+        
+        dfs(root.right, list);
+        
+        return list;
+    }
+}
