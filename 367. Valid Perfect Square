@@ -1,0 +1,7 @@
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        
+        double radical = Math.pow(num, 0.5);
+        return radical % 1 == 0;
+    }
+}
