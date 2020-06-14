@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        
+        if ( s.length() == 0 )
+            return true;
+        
+        char[] subsequence = s.toCharArray();
+        char[] str = t.toCharArray();
+        Queue<Character> queue = new ArrayList<>(str.length);
+        
+        for(char c : subsequence)
+            queue.add(c);
+        
+        // Check if the head of the queue matches with current char from t
+        // stop when the queue is empty
+        for(int i=0; i<str.length; i++) {
+            if ( queue.peek() == str[i] ) {
+                queue.remove();
+            }
+            if ( queue.isEmpty() )
+                return true;
+        }
+        
+        return false;
+        
+    }
+}
